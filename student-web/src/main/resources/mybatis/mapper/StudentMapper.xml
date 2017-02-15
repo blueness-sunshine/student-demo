@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.student.service.mapper.StudentMapper">
+	<!--查询字段-->
+	<sql id="columns">
+		a.id,
+		a.name,
+		a.age
+	</sql>
+
+	<!--查询结果集-->
+	<resultMap id="beanMap" type="org.student.bean.Student">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+	</resultMap>
+
+
+	<!--根据主键获取实体-->
+	<select id="listStudent" resultMap="beanMap">
+		SELECT
+		<include refid="columns"/>
+		FROM
+		student a
+	</select>
+
+</mapper>
